@@ -1,2 +1,6 @@
-# AskYourParents
-Starknet Wallet Managed by an administrator
+
+## AskYourParents
+
+Starknet Wallet managed by an administrator.
+
+
