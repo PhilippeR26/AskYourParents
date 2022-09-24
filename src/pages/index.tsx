@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 //import styles from '../styles/Home.module.css'
 
-import useAddrStore, { MyStateR } from '../context/context'
+import useAddrStore, { MyStateR } from '../context/contextGlobal/contextGlobal'
 
 import { useEffect, useState } from 'react'
 

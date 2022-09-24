@@ -1,7 +1,7 @@
 {
-  "name": "essai02",
+  "name": "ask-your-parents",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,9 +13,12 @@
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "framer-motion": "^6.5.1",
+    "get-starknet": "^1.5.0",
+    "material-react-toastify": "^1.0.1",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "starknet": "^3.12.3",
     "zustand": "^4.1.1"
   },
   "devDependencies": {
