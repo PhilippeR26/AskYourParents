@@ -7,14 +7,21 @@ import { persist } from 'zustand/middleware'
 
 export interface MyStatePar {
     addressChildren: string;
+    childWvalid: boolean;
     setAddChild: (addr: string) => void;
+    setChildWvalid: (addr: boolean) => void;
 }
 const useParentContext = create<MyStatePar>()(persist(
     (set, get) => ({
-        addressChildren: "0xundefined",
+        addressChildren: "",
         setAddChild: (addr: string) => {
             set((state) => ({ addressChildren: addr }))
-        }
+        },
+        childWvalid: false,
+        setChildWvalid: (status: boolean) => {
+            set((state) => ({ childWvalid: status }))
+        },
+
     }),
     { name: 'etatPMparent' })
 );

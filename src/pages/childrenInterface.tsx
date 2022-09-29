@@ -1,4 +1,4 @@
-// page parentInterface.tsx
+// page childrenInterface.tsx
 import type { NextPage } from 'next'
 
 import useAddrStore from '../context/ContextGlobal/contextGlobal'
@@ -7,7 +7,9 @@ import { useStarknet } from "context";
 
 import { useEffect, useState, useRef } from 'react'
 
-import { Text, Button, Box, FormControl, FormLabel, Input, FormHelperText, FormErrorMessage, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, Flex, Spacer } from '@chakra-ui/react'
+import ButtonLL, { WhoParent } from '../component/ButtonLL'
+
+import { Text, Button, Box, FormControl, FormLabel, Input, FormHelperText, FormErrorMessage, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, Flex, Spacer, HStack } from '@chakra-ui/react'
 import { Center, Square, Circle } from '@chakra-ui/react'
 
 import WalletConnect from 'component/WalletConnect'
@@ -29,13 +31,23 @@ const Home: NextPage = () => {
     useEffect(() => { setmyChildWvalid(childWvalid) }, [childWvalid]);
 
     const isAddrInvalid = (myAdChild.length !== 66) || (myAdChild.substring(0, 2) !== "0x");
-    const initRef = useRef;
 
     return (
         <>
             <Box bg="gray.200" w='100%' color='gray.800' borderWidth='1px' overflow='hidden'>
                 <Center>
-                    <Text fontSize='2xl'>Interface for parent  </Text>
+                    <HStack spacing={4}>
+
+                        <ButtonLL genderPerson={WhoParent.father} />
+                        <ButtonLL genderPerson={WhoParent.mother} />
+
+                    </HStack>
+                </Center>
+                <Text>Addr Parent = {String(myAdParent)}  </Text>
+            </Box>
+            <Box bg="gray.200" w='100%' color='gray.800' borderWidth='1px' overflow='hidden'>
+                <Center>
+                    <Text fontSize='2xl'>Interface for children  </Text>
                 </Center>
 
             </Box>
