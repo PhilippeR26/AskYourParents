@@ -15,7 +15,7 @@ import "material-react-toastify/dist/ReactToastify.css";
 
 import {
   StarknetProvider,
-} from "context";
+} from "../context";
 
 
 function MyApp({ Component, pageProps }: AppProps) {

@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev": "NODE_OPTIONS='--inspect' next dev ./src"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.16",

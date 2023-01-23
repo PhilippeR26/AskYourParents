@@ -12,7 +12,7 @@ import ButtonLL, { WhoParent } from '../component/ButtonLL'
 import { Text, Button, Box, FormControl, FormLabel, Input, FormHelperText, FormErrorMessage, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, Flex, Spacer, HStack } from '@chakra-ui/react'
 import { Center, Square, Circle } from '@chakra-ui/react'
 
-import WalletConnect from 'component/WalletConnect'
+import WalletConnect from '../component/WalletConnect'
 
 
 const Home: NextPage = () => {

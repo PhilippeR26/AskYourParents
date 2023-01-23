@@ -23,6 +23,7 @@ export function BlockHashProvider({
   const fetchBlockHash = React.useCallback(() => {
     provider.getBlock("pending").then((newBlock) => {
       setBlock({
+        timestamp: newBlock.timestamp,
         blockHash: newBlock.block_hash,
         blockNumber: number.toFelt(newBlock.block_number),
         gasPrice: newBlock.gas_price ?? "0",
