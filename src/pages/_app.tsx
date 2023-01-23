@@ -1,4 +1,4 @@
-// pages/_app.js
+// pages/_app.tsx
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 

@@ -4,7 +4,7 @@ import { useStarknet } from "../StarknetProvider";
 
 import { BlockHashContext } from "./context";
 import { BLOCK_STATE_INITIAL_STATE, BlockState } from "./model";
-import {toFelt} from "starknet/utils/number";
+import { number } from "starknet";
 
 interface BlockHashProviderProps {
   children: React.ReactNode;
@@ -21,11 +21,11 @@ export function BlockHashProvider({
   );
 
   const fetchBlockHash = React.useCallback(() => {
-    provider.getBlock().then((newBlock) => {
+    provider.getBlock("pending").then((newBlock) => {
       setBlock({
         blockHash: newBlock.block_hash,
-        blockNumber: toFelt(newBlock.block_number),
-        gasPrice: newBlock.gas_price,
+        blockNumber: number.toFelt(newBlock.block_number),
+        gasPrice: newBlock.gas_price ?? "0",
       });
     });
   }, [provider]);

@@ -1,35 +1,37 @@
 // page parentInterface.tsx
 import type { NextPage } from 'next'
 
-import useAddrStore from '../context/ContextGlobal/contextGlobal'
-import useParentContext from '../context/ContextGlobal/contextParent'
+import { useStoreParentTmp, useStoreParentPersist } from '../context/ContextGlobal/contextZS'
 import { useStarknet } from "context";
 
 import { useEffect, useState, useRef } from 'react'
 
 import { Text, Button, Box, FormControl, FormLabel, Input, FormHelperText, FormErrorMessage, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, Flex, Spacer } from '@chakra-ui/react'
 import { Center, Square, Circle } from '@chakra-ui/react'
+import { Search2Icon } from '@chakra-ui/icons'
+import WalletConnect from 'component/ParentWalletConnect'
+import ParentPanel1 from 'component/ParentPanel1'
 
-import WalletConnect from 'component/WalletConnect'
+
+
 
 
 const Home: NextPage = () => {
-    const adParent = useAddrStore(state => state.AddressParent);
-    const [myAdParent, setmyAdParent] = useState<bigint>();
-    useEffect(() => { setmyAdParent(adParent) }, [adParent]);
-
-    // UseContext Starknet provider
-    const { account, connected, setConnected, connectBrowserWallet } = useStarknet();
-
-    //Zustand context in NextJS : address of children wallet, address of children valid
-    const { addressChildren, setAddChild, childWvalid, setChildWvalid } = useParentContext();
-    const [myAdChild, setmyAdChild] = useState<string>(addressChildren);
-    const [myChildWvalid, setmyChildWvalid] = useState<boolean>(childWvalid);
-    useEffect(() => { setmyAdChild(addressChildren) }, [addressChildren]);
-    useEffect(() => { setmyChildWvalid(childWvalid) }, [childWvalid]);
-
-    const isAddrInvalid = (myAdChild.length !== 66) || (myAdChild.substring(0, 2) !== "0x");
-    const initRef = useRef;
+    // global context page number
+    const panelFromStorage = useStoreParentTmp(state => state.panelNum);
+    const setPageNum = useStoreParentTmp((state) => state.setPageNum);
+    const [panelNumber, setPageNumber] = useState<number>();
+    useEffect(() => { setPageNumber(panelFromStorage) }, [panelFromStorage]);
+    // global context parent address
+    const addressParentFromStorage = useStoreParentPersist(state => state.addressParent);
+    const setAddressParent = useStoreParentPersist((state) => state.setAddParent);
+    const [addressParent, setAddParent] = useState<string>();
+    useEffect(() => { setAddParent(addressParentFromStorage) }, [addressParentFromStorage]);
+    // global context children address
+    const addressChildrenFromStorage = useStoreParentPersist(state => state.AddressChildren);
+    const setAddressChildren = useStoreParentPersist((state) => state.setAddChildren);
+    const [addressChildren, setAddChildren] = useState<string>();
+    useEffect(() => { setAddChildren(addressChildrenFromStorage) }, [addressChildrenFromStorage]);
 
     return (
         <>
@@ -37,81 +39,41 @@ const Home: NextPage = () => {
                 <Center>
                     <Text fontSize='2xl'>Interface for parent  </Text>
                 </Center>
-
             </Box>
-            <Text>Addr Parent = {String(myAdParent)}  </Text>
-            <Text>Addr Child local = {myAdChild}  </Text>
-            <Text>Addr Child storage = {addressChildren}  </Text>
-            <Box w='100%' color='gray.800' overflow='hidden'>
-                <Center>
-                    <WalletConnect />
-                </Center>
-                {(connected) ?
-                    <>
-                        <Center py={5}>
-                            <Button ml="4" bg="orange"
-                                onClick={() => {
-                                    setmyAdChild("");
-                                    setAddChild(""); setChildWvalid(false);
-                                }}>
-                                Reset addr child
-                            </Button>
-                        </Center>
-                        <Center py={5}>
-                            {(!myChildWvalid) ?
-                                <Popover>
-                                    <PopoverTrigger>
-                                        <Button ml="4" bg="blue.200">
-                                            Connect Children Wallet
-                                        </Button>
-                                    </PopoverTrigger>
-                                    <PopoverContent w="680px">
-                                        <PopoverArrow />
-                                        <PopoverCloseButton />
-                                        <PopoverBody>
-                                            <FormControl isInvalid={isAddrInvalid}>
-                                                <FormLabel>Enter children wallet address</FormLabel>
-                                                <Input w="100%" placeholder='0x...' value={myAdChild} onChange={(e) => setmyAdChild(e.target.value)}>
-
-                                                </Input>
-                                                <FormHelperText>Enter an hexadecimal Starknet testnet address of 64 characters, with 0x prefix
-                                                </FormHelperText>
-                                                <FormErrorMessage>
-                                                    address not valid.
-                                                </FormErrorMessage>
-                                            </FormControl>
-                                            {!isAddrInvalid && (
-                                                <Flex>
-                                                    <Spacer />
-                                                    <Button >
-                                                        {/* Add onClick to ft for check wallet */}
-                                                        Verify address of children wallet
-                                                    </Button>
-                                                </Flex>
-                                            )
-                                            }
-                                        </PopoverBody>
-
-                                    </PopoverContent>
-                                </Popover>
-                                :
-                                <>
-                                    {/* If address children if fully validated */}
-                                </>
-                            }
-                        </Center>
-                    </>
-                    : ""
+            <Text>Addr Parent = {String(addressParent)}  </Text>
+            <Text>panel Number = {panelNumber}  </Text>
+            <Text>Addr Children = {addressChildren}  </Text>
+            <Button ml="4" bg="orange"
+                onClick={() => { setPageNum(1); }}>
+                panel num 1
+            </Button>
+            <Button ml="4" bg="green.200"
+                onClick={() => { setPageNum(2); }}>
+                panel num 2
+            </Button>
+            <Button ml="4" bg="blue.200"
+                onClick={() => { setPageNum(3); }}>
+                panel num 3
+            </Button>
+            <Text> aaa {"z"} </Text>
+            <Center>
+                {panelNumber == 1 &&
+                    <h1>Panel 1.<br />
+                        <ParentPanel1 />
+                    </h1>
                 }
-                <Center py={5}>
-                </Center>
-            </Box>
-
+                {panelNumber == 2 &&
+                    <h1>Panel 2.</h1>
+                }
+                {panelNumber == 3 &&
+                    <h1>Panel 3.</h1>
+                }
+                {panelNumber == 4 &&
+                    <h1>Panel 4.</h1>
+                }
+            </Center>
         </>
-
     )
 }
-
-
 
 export default Home

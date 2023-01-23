@@ -1,16 +1,17 @@
-// page childrenInterface.tsx
+// page parentInterface.tsx
 import type { NextPage } from 'next'
 
 import useAddrStore from '../context/ContextGlobal/contextGlobal'
-import useParentContext from '../context/ContextGlobal/contextParentZS'
+import useParentContext from '../context/ContextGlobal/contextParent'
 import { useStarknet } from "context";
 
 import { useEffect, useState, useRef } from 'react'
 
-import ButtonLL, { WhoParent } from '../component/ButtonLL'
-
-import { Text, Button, Box, FormControl, FormLabel, Input, FormHelperText, FormErrorMessage, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, Flex, Spacer, HStack } from '@chakra-ui/react'
+import { Text, Button, Box, FormControl, FormLabel, Input, FormHelperText, FormErrorMessage, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, Flex, Spacer } from '@chakra-ui/react'
 import { Center, Square, Circle } from '@chakra-ui/react'
+import { Search2Icon } from '@chakra-ui/icons'
+
+
 
 import WalletConnect from 'component/WalletConnect'
 
@@ -30,24 +31,15 @@ const Home: NextPage = () => {
     useEffect(() => { setmyAdChild(addressChildren) }, [addressChildren]);
     useEffect(() => { setmyChildWvalid(childWvalid) }, [childWvalid]);
 
+    //const isAddrInvalid = (myAdChild.length !== 66) || (myAdChild.substring(0, 2) !== "0x");
     const isAddrInvalid = (myAdChild.length !== 66) || (myAdChild.substring(0, 2) !== "0x");
+    const initRef = useRef;
 
     return (
         <>
             <Box bg="gray.200" w='100%' color='gray.800' borderWidth='1px' overflow='hidden'>
                 <Center>
-                    <HStack spacing={4}>
-
-                        <ButtonLL genderPerson={WhoParent.father} />
-                        <ButtonLL genderPerson={WhoParent.mother} />
-
-                    </HStack>
-                </Center>
-                <Text>Addr Parent = {String(myAdParent)}  </Text>
-            </Box>
-            <Box bg="gray.200" w='100%' color='gray.800' borderWidth='1px' overflow='hidden'>
-                <Center>
-                    <Text fontSize='2xl'>Interface for children  </Text>
+                    <Text fontSize='2xl'>Interface for parent  </Text>
                 </Center>
 
             </Box>
@@ -71,7 +63,7 @@ const Home: NextPage = () => {
                         </Center>
                         <Center py={5}>
                             {(!myChildWvalid) ?
-                                <Popover>
+                                <Popover autoFocus>
                                     <PopoverTrigger>
                                         <Button ml="4" bg="blue.200">
                                             Connect Children Wallet
@@ -86,7 +78,7 @@ const Home: NextPage = () => {
                                                 <Input w="100%" placeholder='0x...' value={myAdChild} onChange={(e) => setmyAdChild(e.target.value)}>
 
                                                 </Input>
-                                                <FormHelperText>Enter an hexadecimal Starknet testnet address of 64 characters, with 0x prefix
+                                                <FormHelperText>Enter an hexadecimal Starknet testnet address of 64 characters max, with 0x prefix
                                                 </FormHelperText>
                                                 <FormErrorMessage>
                                                     address not valid.
@@ -95,7 +87,8 @@ const Home: NextPage = () => {
                                             {!isAddrInvalid && (
                                                 <Flex>
                                                     <Spacer />
-                                                    <Button >
+                                                    <Button leftIcon={<Search2Icon />}>
+
                                                         {/* Add onClick to ft for check wallet */}
                                                         Verify address of children wallet
                                                     </Button>

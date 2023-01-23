@@ -58,7 +58,7 @@ const useStarknetManager = (): StarknetState => {
 
   const connectBrowserWallet = React.useCallback(async () => {
     try {
-      const starknet = await connect({ modalOptions: { theme: "dark" } }); // Let the user pick a wallet
+      const starknet = await connect({ modalTheme: "dark" }); // Let the user pick a wallet
       if (!starknet) return;
       await starknet.enable(); // connect the wallet
       if (

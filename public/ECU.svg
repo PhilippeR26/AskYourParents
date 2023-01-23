@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="ECU.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient6074">
+      <stop
+         style="stop-color:#fdff02;stop-opacity:1;"
+         offset="0"
+         id="stop6070" />
+      <stop
+         style="stop-color:#fdff02;stop-opacity:0;"
+         offset="1"
+         id="stop6072" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient6030"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#a4e8fc;stop-opacity:1;"
+         offset="0"
+         id="stop6028" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6074"
+       id="linearGradient6078"
+       x1="87.931671"
+       y1="88.52977"
+       x2="177.73424"
+       y2="128.35292"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.69749999,0,0,0.69749999,32.381041,35.973659)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="281.45894"
+     inkscape:cy="653.70487"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1440"
+     inkscape:window-y="1480"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:url(#linearGradient6078);fill-opacity:1;stroke-width:0.18454686"
+       id="path10"
+       cx="109.55912"
+       cy="112.45039"
+       rx="38.775459"
+       ry="37.284096" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Pothana2000;-inkscape-font-specification:Pothana2000;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:0.64516127;stroke:none;stroke-width:0.26458332;"
+       x="79.646317"
+       y="121.67119"
+       id="text6082"><tspan
+         sodipodi:role="line"
+         id="tspan6080"
+         x="79.646317"
+         y="121.67119"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35.27777863px;font-family:Purisa;-inkscape-font-specification:Purisa;fill:#000000;fill-opacity:0.64516127;stroke-width:0.26458332;">Ecu</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot6084"
+       style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion6086"><rect
+           id="rect6088"
+           width="156.57364"
+           height="189.90868"
+           x="39.39595"
+           y="426.52457" /></flowRegion><flowPara
+         id="flowPara6090"></flowPara></flowRoot>  </g>
+</svg>

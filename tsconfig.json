@@ -18,15 +18,17 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "src",
-    "incremental": true
+    "incremental": true,
+    "sourceMap": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src"
+    "src",
+    "scripts/"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules/"
   ]
 }

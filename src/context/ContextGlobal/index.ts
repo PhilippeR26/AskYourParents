@@ -1,2 +1,2 @@
 export * from "./contextGlobal";
-export * from "./contextParent";
+export * from "./contextParentZS";
