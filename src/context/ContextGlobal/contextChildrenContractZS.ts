@@ -1,11 +1,11 @@
 // contextChildrenAccountZS.ts
 // definition of Zustand storage of Parent page, for children account variables
-import { Abi, Contract, ContractInterface, FunctionAbi, Provider, ProviderInterface, StructAbi } from "starknet";
+import { Abi, Account, Contract, ContractInterface, FunctionAbi, Provider, ProviderInterface, StructAbi } from "starknet";
 import { create } from 'zustand'
 import { toast } from "material-react-toastify";
 
 // global children wallet vars of Parent page, without save 
-export interface ChildrenAccountState {
+export interface ChildrenContractState {
     childrenContract?: Contract;
     childrenConnected: boolean;
     connectChildrenWallet: (provider: Provider, childrenAccountAddress: string, parentAccountAddress: string) => void;
@@ -13,13 +13,13 @@ export interface ChildrenAccountState {
 }
 
 // definition of children wallet tmp ZS storage for Parent page
-export const useStoreChildrenTmp = create<ChildrenAccountState>(set => ({
+export const useStoreChildrenTmp = create<ChildrenContractState>()(set => ({
     childrenContract: undefined,
     childrenConnected: false,
     connectChildrenWallet: async (provider: Provider, childrenAccountAddress: string, parentAccountAddress: string) => {
         try {
             const { abi: childrenContractABI } = await provider.getClassAt(childrenAccountAddress);
-            if (childrenContractABI === undefined) { throw new Error("no abi at this address.") };
+            if (childrenContractABI === undefined) { throw new Error("no account at this address.") };
             if (!childrenContractABI.some((itemAbi) => itemAbi.name === "getSuperAdmin")) { throw new Error("Not a Children Account contract.") };
             const childrenContract = new Contract(childrenContractABI, childrenAccountAddress, provider);
             const result = await childrenContract.call("isAdmin", [parentAccountAddress]);

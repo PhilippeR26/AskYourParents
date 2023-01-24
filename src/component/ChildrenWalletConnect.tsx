@@ -4,28 +4,20 @@ import { useEffect, useState } from "react";
 import { Account, AccountInterface, Contract, ContractInterface, ec, json, Provider, ProviderInterface } from "starknet";
 
 import { useStoreStarknetTmp } from "context/ContextGlobal/contextStarknetZS";
-import { useStoreChildrenTmp } from "context/ContextGlobal/contextChildrenAccountZS";
+import { useStoreChildrenTmp } from "context/ContextGlobal/contextChildrenContractZS";
 import { Search2Icon } from "@chakra-ui/icons";
 
-import ChildrenContractAbi from "../contracts/abis/ChildrenAccount_abi.json";
+import ChildrenContractAbi from "../contracts/abis/ChildrenAccount-1.0.0_abi.json";
 import { OZ_ACCOUNT0_DEVNET_PRIVATE_KEY } from "../contracts/addresses";
 import { OZ_ACCOUNT0_DEVNET_ADDRESS } from "../contracts/addresses";
 
 
 const ChildrenWalletConnect = () => {
-    // global Starknet context : account (readonly)
+    // global Starknet context : Parent account (readonly)
     const accountParentFromStorage = useStoreStarknetTmp(state => state.account);
     const [accountParent, setAccountParent] = useState<AccountInterface>();
     useEffect(() => { setAccountParent(accountParentFromStorage) }, [accountParentFromStorage]);
-    // // global Starknet context : connected (readonly)
-    // const connectedParentFromStorage = useStoreStarknetTmp(state => state.connected);
-    // const [connectedParent, setConnectParent] = useState<boolean>();
-    // useEffect(() => { setConnectParent(connectedParentFromStorage) }, [connectedParentFromStorage]);
-    // // global Starknet context : connected (writeonly)
-    // const setConnectedParent = useStoreStarknetTmp(state => state.setConnected);
-    // // global Starknet context : connected (writeonly)
-    // const connectBrowserWallet = useStoreStarknetTmp(state => state.connectBrowserWallet);
-    // global Starknet context : account (readonly)
+    // global Starknet context : provider (readonly)
     const providerFromStorage = useStoreStarknetTmp(state => state.provider);
     const [provider, setProvider] = useState<Provider>();
     useEffect(() => { setProvider(providerFromStorage) }, [providerFromStorage]);
@@ -43,23 +35,16 @@ const ChildrenWalletConnect = () => {
     // global Children context : setChildrenConnected (writeonly)
     const setChildrenConnected = useStoreChildrenTmp(state => state.setChildrenConnected);
 
-
-
-
-    // useEffect(() => {
-    //     if (account && account.address.length > 0) {
-    //         setConnected(true);
-    //     }
-    // }, [account, setConnected, connected]);
     const [inputString, setInputString] = useState<string>("");
     const isAddrInvalid: boolean = (inputString.length !== 66) || (inputString.substring(0, 2) !== "0x");
+
 
     async function setAdmin(): Promise<void> { // only for dev purpose
         const privateKey: string = OZ_ACCOUNT0_DEVNET_PRIVATE_KEY;
         const starkKeyPair = ec.getKeyPair(privateKey);
         const accountAddress: string = OZ_ACCOUNT0_DEVNET_ADDRESS;
         try {
-            if (typeof provider !== "undefined") {
+            if (provider) {
                 const account0 = new Account(provider, accountAddress, starkKeyPair);
                 const compiledChildrenABI = json.parse(JSON.stringify(ChildrenContractAbi));
 
@@ -74,8 +59,9 @@ const ChildrenWalletConnect = () => {
         } catch (e: any) { console.log(e); }
 
     };
+
     return (
-        <Center>
+        <>
             {!childrenConnected ? (
                 <>
                     <Button ml="8"
@@ -128,7 +114,7 @@ const ChildrenWalletConnect = () => {
                     </Button>
                 )
             }
-        </Center>
+        </>
     )
 };
 

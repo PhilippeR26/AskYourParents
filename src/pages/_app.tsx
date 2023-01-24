@@ -22,22 +22,22 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 
   return (
-    <StarknetProvider>
-      <ChakraProvider>
-        <Head>
-          <title>Pocket Money</title>
-          <meta name="Pocket Money" content="citical.devs.fr - application of Cairo with account abstraction in Starknet" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <ToastContainer />
-        <Box bg="gray.200" w='100%' color='gray.800' borderWidth='1px' overflow='hidden'>
-          <Heading>
-            <Center> 💰 Pocket Money - Ask your parents 💰 </Center>
-          </Heading>
-        </Box>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </StarknetProvider>
+    //<StarknetProvider>
+    <ChakraProvider>
+      <Head>
+        <title>Pocket Money</title>
+        <meta name="Pocket Money" content="citical.devs.fr - application of Cairo with account abstraction in Starknet" />
+        <link rel="icon" href="/favicon/favicon.ico" />
+      </Head>
+      <ToastContainer />
+      <Box bg="gray.200" w='100%' color='gray.800' borderWidth='1px' overflow='hidden'>
+        <Heading>
+          <Center> 💰 Pocket Money - Ask your parents 💰 </Center>
+        </Heading>
+      </Box>
+      <Component {...pageProps} />
+    </ChakraProvider>
+    // </StarknetProvider>
   )
 }
 
