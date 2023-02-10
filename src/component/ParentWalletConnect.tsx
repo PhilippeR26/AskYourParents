@@ -15,7 +15,7 @@ const ParentWalletConnect = () => {
     useEffect(() => { setConnect(connectedFromStorage) }, [connectedFromStorage]);
     // global Starknet context : connected (writeonly)
     const setConnected = useStoreStarknetTmp(state => state.setConnected);
-    // global Starknet context : connected (writeonly)
+    // global Starknet context : connectBrowserWallet (writeonly)
     const connectBrowserWallet = useStoreStarknetTmp(state => state.connectBrowserWallet);
 
 

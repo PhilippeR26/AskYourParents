@@ -13,10 +13,10 @@
 #argentX-Chrome
 #curl -X POST http://127.0.0.1:5050/mint -d '{"address":"0x04b497639c3348AbF6E5761094c1C8a28616A273598e38Fd5ab41C3d4277c295","amount":50000000000000000000,"lite":true}' -H "Content-Type:application/json"
 #argentX-Brave-devnet-account 1
-curl -X POST http://127.0.0.1:5050/mint -d '{"address":"0x045f825D68f5253A546f3E20392cA7159a9B1CABb49EC4285098901a2714d5a4","amount":50000000000000000000,"lite":true}' -H "Content-Type:application/json"
+curl -X POST http://127.0.0.1:5050/mint -d '{"address":"0x0592d37DF7702c411BD72b577687A7F7c9759362cDDe76299e7c0865f47a883C","amount":50000000000000000000,"lite":true}' -H "Content-Type:application/json"
 
 #argentX-Brave-devnet-account 1
-curl -X POST http://127.0.0.1:5050/mint -d '{"address":"0x0569c3e6197Fb1760E436AcFf9ac32Adfc1168408A9961240A2ca69Ae9712cEb","amount":50000000000000000000,"lite":true}' -H "Content-Type:application/json"
+curl -X POST http://127.0.0.1:5050/mint -d '{"address":"0x02ac57373755fb088b94e4cc9948C945F45e22d1E41768235ED3e95a14346eB1","amount":50000000000000000000,"lite":true}' -H "Content-Type:application/json"
 
 #argentX-Brave-devnet-account 1
 curl -X POST http://127.0.0.1:5050/mint -d '{"address":"0x02E3Eb76e5C4EfD86d83DeF28a5BE2c55A933bC0CF45f5854B02484bdaD9D629","amount":50000000000000000000,"lite":true}' -H "Content-Type:application/json"
